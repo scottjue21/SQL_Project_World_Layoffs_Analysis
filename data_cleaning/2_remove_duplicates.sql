@@ -1,4 +1,4 @@
--- 1. Remove Duplicates
+-- Remove Duplicates
 -- First let's check for duplicates
 
 WITH duplicate_cte AS
