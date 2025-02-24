@@ -1,4 +1,4 @@
--- Get the maximum number of layoffs and the maximum percentage of employees laid off
+-- Get the maximum number of layoffs and the maximum percentage of employees laid off to understand the magnitude of the workfoce reduction at any one time
 SELECT MAX(total_laid_off), MAX(percentage_laid_off)
 FROM world_layoffs.layoffs_staging2;
 
@@ -19,7 +19,7 @@ RESULTS
 ]  
 */  
 
--- Find the earliest and latest layoff dates in the dataset
+-- Find the earliest and latest layoff dates in the dataset to understand the time period
 SELECT MIN(`date`), MAX(`date`)
 FROM world_layoffs.layoffs_staging2;
 
