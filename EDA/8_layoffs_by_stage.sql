@@ -1,7 +1,8 @@
 -- Calculate the total layoffs per company stage and order by the highest layoffs  
 -- This query helps identify which funding stages experience the most layoffs
-SELECT stage, SUM(total_laid_off)
+SELECT stage, SUM(total_laid_off) AS 'Total Laid Off'
 FROM world_layoffs.layoffs_staging2
+WHERE stage IS NOT NULL
 GROUP BY stage
 ORDER BY 2 DESC;
 
@@ -20,32 +21,79 @@ Here is the JSON file to verify the results from the query:
 
 RESULTS  
 =======  
-[  
-  { "stage": "Post-IPO", "SUM(total_laid_off)": "204132" },  
-  { "stage": "Unknown", "SUM(total_laid_off)": "40716" },  
-  { "stage": "Acquired", "SUM(total_laid_off)": "27576" },  
-  { "stage": "Series C", "SUM(total_laid_off)": "20017" },  
-  { "stage": "Series D", "SUM(total_laid_off)": "19225" },  
-  { "stage": "Series B", "SUM(total_laid_off)": "15311" },  
-  { "stage": "Series E", "SUM(total_laid_off)": "12697" },  
-  { "stage": "Series F", "SUM(total_laid_off)": "9932" },  
-  { "stage": "Private Equity", "SUM(total_laid_off)": "7957" },  
-  { "stage": "Series H", "SUM(total_laid_off)": "7244" },  
-  { "stage": "Series A", "SUM(total_laid_off)": "5678" },  
-  { "stage": "Series G", "SUM(total_laid_off)": "3697" },  
-  { "stage": "Series J", "SUM(total_laid_off)": "3570" },  
-  { "stage": "Series I", "SUM(total_laid_off)": "2855" },  
-  { "stage": "Seed", "SUM(total_laid_off)": "1636" },  
-  { "stage": "Subsidiary", "SUM(total_laid_off)": "1094" },  
-  { "stage": null, "SUM(total_laid_off)": "322" }  
-]  
+[
+  {
+    "stage": "Post-IPO",
+    "Total Laid Off": "204132"
+  },
+  {
+    "stage": "Unknown",
+    "Total Laid Off": "40716"
+  },
+  {
+    "stage": "Acquired",
+    "Total Laid Off": "27576"
+  },
+  {
+    "stage": "Series C",
+    "Total Laid Off": "20017"
+  },
+  {
+    "stage": "Series D",
+    "Total Laid Off": "19225"
+  },
+  {
+    "stage": "Series B",
+    "Total Laid Off": "15311"
+  },
+  {
+    "stage": "Series E",
+    "Total Laid Off": "12697"
+  },
+  {
+    "stage": "Series F",
+    "Total Laid Off": "9932"
+  },
+  {
+    "stage": "Private Equity",
+    "Total Laid Off": "7957"
+  },
+  {
+    "stage": "Series H",
+    "Total Laid Off": "7244"
+  },
+  {
+    "stage": "Series A",
+    "Total Laid Off": "5678"
+  },
+  {
+    "stage": "Series G",
+    "Total Laid Off": "3697"
+  },
+  {
+    "stage": "Series J",
+    "Total Laid Off": "3570"
+  },
+  {
+    "stage": "Series I",
+    "Total Laid Off": "2855"
+  },
+  {
+    "stage": "Seed",
+    "Total Laid Off": "1636"
+  },
+  {
+    "stage": "Subsidiary",
+    "Total Laid Off": "1094"
+  }
+]
 */
 
 
 -- Since Post-IPO are typically larger companies with more employess,
 -- so this could explain the large number of layoffs.
 -- I want to investigate the average percentage of employees laid off per company stage to provide a better picture of the relative impact. 
-SELECT stage, AVG(percentage_laid_off)
+SELECT stage, AVG(percentage_laid_off) AS 'Average Percent Laid Off'
 FROM world_layoffs.layoffs_staging2
 WHERE percentage_laid_off IS NOT NULL
 AND stage IS NOT NULL
@@ -67,70 +115,71 @@ KEY OBSERVATIONS:
 - Subsidiaries experience the lowest layoff percentages (~5.7%), likely benefiting from their parent company’s resources.
 
 RESULTS:
+=======
 [
   {
     "stage": "Seed",
-    "AVG(percentage_laid_off)": 0.7017
+    "Average Percent Laid Off": 0.7017021276595745
   },
   {
     "stage": "Series A",
-    "AVG(percentage_laid_off)": 0.3840
+    "Average Percent Laid Off": 0.3839639639639637
   },
   {
     "stage": "Series B",
-    "AVG(percentage_laid_off)": 0.3222
+    "Average Percent Laid Off": 0.3221596244131453
   },
   {
     "stage": "Unknown",
-    "AVG(percentage_laid_off)": 0.3136
+    "Average Percent Laid Off": 0.31364754098360664
   },
   {
     "stage": "Acquired",
-    "AVG(percentage_laid_off)": 0.3074
+    "Average Percent Laid Off": 0.30740229885057463
   },
   {
     "stage": "Series C",
-    "AVG(percentage_laid_off)": 0.2390
+    "Average Percent Laid Off": 0.23902061855670093
   },
   {
     "stage": "Series D",
-    "AVG(percentage_laid_off)": 0.1836
+    "Average Percent Laid Off": 0.18362275449101795
   },
   {
     "stage": "Series E",
-    "AVG(percentage_laid_off)": 0.1828
+    "Average Percent Laid Off": 0.18279069767441847
   },
   {
     "stage": "Series G",
-    "AVG(percentage_laid_off)": 0.1608
+    "Average Percent Laid Off": 0.1607692307692308
   },
   {
     "stage": "Private Equity",
-    "AVG(percentage_laid_off)": 0.1590
+    "Average Percent Laid Off": 0.15896551724137933
   },
   {
     "stage": "Post-IPO",
-    "AVG(percentage_laid_off)": 0.1577
+    "Average Percent Laid Off": 0.15766504854368943
   },
   {
     "stage": "Series J",
-    "AVG(percentage_laid_off)": 0.1425
+    "Average Percent Laid Off": 0.1425
   },
   {
     "stage": "Series F",
-    "AVG(percentage_laid_off)": 0.1395
+    "Average Percent Laid Off": 0.13948717948717948
   },
   {
     "stage": "Series H",
-    "AVG(percentage_laid_off)": 0.1360
+    "Average Percent Laid Off": 0.136
   },
   {
     "stage": "Series I",
-    "AVG(percentage_laid_off)": 0.0967
+    "Average Percent Laid Off": 0.09666666666666668
   },
   {
     "stage": "Subsidiary",
-    "AVG(percentage_laid_off)": 0.0567
+    "Average Percent Laid Off": 0.05666666666666666
   }
 ]
 */
