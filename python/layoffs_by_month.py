@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.dates as mdates
 from matplotlib.ticker import FuncFormatter
 
-# add month-to-month data
+# add month-to-month data from query
 data = [
     {"MONTH": "2020-03", "SUM(total_laid_off)": 9628},
     {"MONTH": "2020-04", "SUM(total_laid_off)": 26710},
@@ -75,7 +75,7 @@ for start, end in highlight_periods:
     ax.fill_between(subset['MONTH'], 0, subset['SUM(total_laid_off)'], color='red', alpha=0.3)
 
 # Adding labels and title
-plt.title('Total Layoffs Over Time with Month Clusters Highlighted')
+plt.title('Total Layoffs Over Time with Peak Periods Highlighted')
 plt.xlabel('Date')
 plt.ylabel('Total Layoffs')
 plt.grid(True)

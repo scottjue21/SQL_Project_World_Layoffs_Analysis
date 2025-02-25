@@ -3,6 +3,7 @@
 -- and provides insight into the scale of workforce reductions for specific industries
 SELECT industry, SUM(total_laid_off)
 FROM world_layoffs.layoffs_staging2
+WHERE industry IS NOT NULL
 GROUP BY industry
 ORDER BY 2 DESC;
 
@@ -23,17 +24,126 @@ Here is the JSON file to verify the results from the query:
 
 RESULTS  
 =======  
-[  
-  { "industry": "Consumer", "SUM(total_laid_off)": "45182" },  
-  { "industry": "Retail", "SUM(total_laid_off)": "43613" },  
-  { "industry": "Other", "SUM(total_laid_off)": "36289" },  
-  { "industry": "Transportation", "SUM(total_laid_off)": "33748" },  
-  { "industry": "Finance", "SUM(total_laid_off)": "28344" },  
-  { "industry": "Healthcare", "SUM(total_laid_off)": "25953" },  
-  { "industry": "Food", "SUM(total_laid_off)": "22855" },  
-  { "industry": "Real Estate", "SUM(total_laid_off)": "17565" },  
-  { "industry": "Travel", "SUM(total_laid_off)": "17159" },  
-  { "industry": "Hardware", "SUM(total_laid_off)": "13828" }  
-  -- (Remaining industries omitted for brevity)  
-]  
+[
+  {
+    "industry": "Consumer",
+    "SUM(total_laid_off)": "45182"
+  },
+  {
+    "industry": "Retail",
+    "SUM(total_laid_off)": "43613"
+  },
+  {
+    "industry": "Other",
+    "SUM(total_laid_off)": "36289"
+  },
+  {
+    "industry": "Transportation",
+    "SUM(total_laid_off)": "33748"
+  },
+  {
+    "industry": "Finance",
+    "SUM(total_laid_off)": "28344"
+  },
+  {
+    "industry": "Healthcare",
+    "SUM(total_laid_off)": "25953"
+  },
+  {
+    "industry": "Food",
+    "SUM(total_laid_off)": "22855"
+  },
+  {
+    "industry": "Real Estate",
+    "SUM(total_laid_off)": "17565"
+  },
+  {
+    "industry": "Travel",
+    "SUM(total_laid_off)": "17159"
+  },
+  {
+    "industry": "Hardware",
+    "SUM(total_laid_off)": "13828"
+  },
+  {
+    "industry": "Education",
+    "SUM(total_laid_off)": "13338"
+  },
+  {
+    "industry": "Sales",
+    "SUM(total_laid_off)": "13216"
+  },
+  {
+    "industry": "Crypto",
+    "SUM(total_laid_off)": "10693"
+  },
+  {
+    "industry": "Marketing",
+    "SUM(total_laid_off)": "10258"
+  },
+  {
+    "industry": "Fitness",
+    "SUM(total_laid_off)": "8748"
+  },
+  {
+    "industry": "Security",
+    "SUM(total_laid_off)": "5979"
+  },
+  {
+    "industry": "Infrastructure",
+    "SUM(total_laid_off)": "5785"
+  },
+  {
+    "industry": "Media",
+    "SUM(total_laid_off)": "5234"
+  },
+  {
+    "industry": "Data",
+    "SUM(total_laid_off)": "5135"
+  },
+  {
+    "industry": "Logistics",
+    "SUM(total_laid_off)": "4026"
+  },
+  {
+    "industry": "Construction",
+    "SUM(total_laid_off)": "3863"
+  },
+  {
+    "industry": "Support",
+    "SUM(total_laid_off)": "3523"
+  },
+  {
+    "industry": "HR",
+    "SUM(total_laid_off)": "2783"
+  },
+  {
+    "industry": "Recruiting",
+    "SUM(total_laid_off)": "2775"
+  },
+  {
+    "industry": "Product",
+    "SUM(total_laid_off)": "1233"
+  },
+  {
+    "industry": "Legal",
+    "SUM(total_laid_off)": "836"
+  },
+  {
+    "industry": "Energy",
+    "SUM(total_laid_off)": "802"
+  },
+  {
+    "industry": "Aerospace",
+    "SUM(total_laid_off)": "661"
+  },
+  {
+    "industry": "Fin-Tech",
+    "SUM(total_laid_off)": "215"
+  },
+  {
+    "industry": "Manufacturing",
+    "SUM(total_laid_off)": "20"
+  }
+]
 */
