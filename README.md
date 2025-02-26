@@ -2,14 +2,14 @@
 
 
 ## Introduction
-This project explores global layoffs data using a series of SQL queries to extract insights and trends. The dataset coincides with the COVID-19 pandemic (2020–2023), providing an opportunity to analyze how the pandemic influenced workforce reductions across industries, countries, and company stages. The analysis examines overall trends, high-impact layoffs, and layoffs by company stage to understand both the total number of layoffs and their relative impact on companies of different sizes and stages.  
+This project explores global layoffs data using a series of SQL queries to extract insights and trends. The dataset spanning the COVID-19 pandemic (2020–2023), a period that saw significant workforce disruptions. This provided an opportunity to analyze how the pandemic influenced workforce reductions across industries, countries, and company stages. The analysis examines overall trends, high-impact layoffs, and layoffs by company stage to understand both the total number of layoffs and their relative impact on companies of different sizes and stages.  
 
 Explore the SQL queries used the analysis here: [EDA Files Folder](/EDA/)
 
 ## Data Cleaning and Preparation
 Before performing the analysis, several data cleaning tasks were executed in SQL to ensure the dataset was accurate and consistent:
 - **Removed duplicates:** Ensured that no duplicate records exist in the dataset.
-- **Standardized the data:** Uniformed data formats and naming conventions for consistency.
+- **Standardized the data:** Standardized data formats and naming conventions for consistency.
 - **Fixed null values:** Addressed missing data to enhance the accuracy of the analysis.
 - **Removed irrelevant rows and columns:** Excluded data that did not contribute valuable insights.
 
@@ -49,7 +49,7 @@ Results Breakdown:
 **Maximum layoffs**: 12,000 employees <br>
 **Maximum percentage laid off**: 100%
 
-**Query 1b: Maximum Layoffs and Percentage Laid Off**  
+**Query 1b: Earliest and Latest Layoff Dates**  
 To establish the dataset's timeframe, this query computes the earliest and latest layoff dates. Understanding the timeframe is crucial for contextualizing subsequent analysis.
 
 ```sql
@@ -143,7 +143,7 @@ Results Breakdown:
 - These figures help to illustrate regional differences in how layoffs impacted various countries.
 
 ### Query 6: Layoffs by Year
-This query aggregates layoffs on an annual basis by extracting the year from the date field and summing up the total layoffs for each year. The results are ordered in descending order by year to quickly identify the most recent trends and compare annual changes. This helps in understanding how layoffs have fluctuated over the 3 yrar time period.
+This query aggregates layoffs on an annual basis by extracting the year from the date field and summing up the total layoffs for each year. The results are ordered in descending order by year to quickly identify the most recent trends and compare annual changes. This helps in understanding how layoffs have fluctuated over the 3-year time period.
 
 ```sql
 SELECT YEAR(`date`), SUM(total_laid_off)
@@ -175,7 +175,7 @@ ORDER BY 1 ASC;
 Results Breakdown:
 
 - The data reveals clusters of high layoffs during certain years, typically happening in 3-4 month clusters.
-- For example, in 2020, months like April and May show significant spikes. This is likely due to the start of the mandated quarantne during COVID
+- For example, in 2020, months like April and May show significant spikes. This is likely due to the start of the mandated quarantine during COVID
 - In 2022 there are notable surges in May-August and October-November.
 - In 2023 there is a large spike in Jan-Feb.
 - These clusters suggest that after a period of low layoffs, a sudden spike may signal further layoffs in the near future and maintained at a high level for a few months.
@@ -223,7 +223,7 @@ Results Breakdown:
 - **Seed**: ~70% average layoffs
 - **Series A**: ~38% average layoffs
 - **Series B**: ~32% average layoffs
-- **Acquired**: ~31% avagage layoffs
+- **Acquired**: ~31% average layoffs
 - **Post-IPO**: ~16% average layoffs
 - Other stages follow accordingly, with Subsidiaries showing the lowest impact (~5.7%).
 
